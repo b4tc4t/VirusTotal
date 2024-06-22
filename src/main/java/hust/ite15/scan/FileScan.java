@@ -52,7 +52,7 @@ public class FileScan extends Scan {
     private static final String ENGINE = "engine_name";
 
     @Override
-    public void post (String apikey) throws IOException, InterruptedException {
+    public void post(String apikey) throws IOException, InterruptedException {
         if (!isValid())
             return;
         Path localFile = Paths.get(filepath);
@@ -72,7 +72,6 @@ public class FileScan extends Scan {
         HttpResponse<String> response = client.send(request, BodyHandlers.ofString());
         JSONObject json = new JSONObject(response.body());
 
-        //UPDATE AnalysisId
         try {
             this.setAnalysisId(json.getJSONObject("data").getString("id"));
         } catch (Exception e) {
@@ -83,7 +82,6 @@ public class FileScan extends Scan {
             }
         }
 
-        // UPDATE ObjectId
         if (this.getObjectId() == null && this.getAnalysisId() != null) {
             HttpRequest req = HttpRequest.newBuilder()
                     .uri(URI.create("https://www.virustotal.com/api/v3/analyses/" + getAnalysisId()))
@@ -109,8 +107,6 @@ public class FileScan extends Scan {
     public void getReport(String apikey) throws IOException, InterruptedException {
         if (getObjectId() == null)
             return;
-
-        //SEND REANALYSE req if already get report before
         if (getJson() != null) {
             HttpRequest rescan = HttpRequest.newBuilder()
                     .uri(URI.create("https://www.virustotal.com/api/v3/files/" + getObjectId() + "/analyse"))
@@ -131,7 +127,6 @@ public class FileScan extends Scan {
             }
         }
 
-        //GET REPORT req
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("https://www.virustotal.com/api/v3/files/" + this.getObjectId()))
                 .header("accept", "application/json")
@@ -143,14 +138,12 @@ public class FileScan extends Scan {
         this.setJson(json);
 
         try {
-            //GET BASIC INFO
             this.size = json.getJSONObject("data").getJSONObject(GET_ATTR).getInt("size");
             if (getObjectId().matches("[a-fA-F0-9]{40}") || getObjectId().matches("[a-fA-F0-9]{32}"))
                 setObjectId(json.getJSONObject("data").getString("id"));
             if (getName() == null)
                 setName(json.getJSONObject("data").getJSONObject(GET_ATTR).getString("meaningful_name"));
 
-            //GET ANALYSIS
             setTime(json.getJSONObject("data").getJSONObject(GET_ATTR).getInt("last_analysis_date"));
             setHarmless(json.getJSONObject("data").getJSONObject(GET_ATTR).getJSONObject(LAST_STATS).getInt(HARM));
             this.typeUnsup = json.getJSONObject("data").getJSONObject(GET_ATTR).getJSONObject(LAST_STATS).getInt(TYPE_UNSUPPORTED);
@@ -160,14 +153,12 @@ public class FileScan extends Scan {
             setUndetected(json.getJSONObject("data").getJSONObject(GET_ATTR).getJSONObject(LAST_STATS).getInt(UNDETECTED));
         } catch (Exception e) {
             try {
-                //check if invalid md5/sha1/sha256 lookup
                 if (json.getJSONObject(ERR_ATTR).getString("code").equalsIgnoreCase("NotFoundError")) {
                     this.setJson(null);
                     return;
                 }
                 System.out.println(ERR + json.getJSONObject(ERR_ATTR).getString(ERR_MESS) + " (" + json.getJSONObject(ERR_ATTR).getString("code") + ")");
             } catch (Exception ee) {
-                //check if analysis not finished
                 if (e.getMessage().equals("JSONObject[\"last_analysis_date\"] not found."))
                     System.out.println("WARNING: No finished analysis found!");
                 else

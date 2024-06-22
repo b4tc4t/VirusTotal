@@ -16,29 +16,22 @@ public class Handler {
 
     public static void fileScan(String apiKey) throws IOException, InterruptedException {
 
-        System.out.println("a) Press ENTER to Browse Files...");
-        System.out.println("b) OR INPUT Filename (same directory) to upload...");
-        System.out.println("c) OR INPUT File's MD5/SHA1/SHA256 to search.");
-        System.out.println("*******************");
-        System.out.print("> Input: ");
+        System.out.println("Press Enter to browse a file or input MD5/SHA-1/SHA-256 hash to scan: ");
+        System.out.println();
+        System.out.print("Enter your choice: ");
         String filename = input.nextLine().strip();
         FileScan fileS = new FileScan();
         if (filename.isBlank()) {
             // Mode: Choose File to Upload
             UploadFile file = new UploadFile();
             fileS.setFilepath(file.getFile());
-        } else {
-            // Mode: Find File in directory to Upload
-            File file = new File(filename);
-            fileS.setFilepath(file);
         }
 
         if (fileS.isValid()) {
-            System.out.println("...Uploading & Scanning...");
+            System.out.println("Uploading...");
             fileS.post(apiKey);
         } else if (filename.matches("[a-fA-F0-9]{64}") || filename.matches("[a-fA-F0-9]{40}") || filename.matches("[a-fA-F0-9]{32}")) {
-            // Mode: Try MD5/SHA1/SHA256 File Lookup
-            System.out.println("...Assuming File MD5/SHA1/SHA256 Lookup...");
+            System.out.println("Scanning using hash");
             fileS.setObjectId(filename);
             fileS.setFilepath(null);
             Thread.sleep(250);
@@ -51,6 +44,8 @@ public class Handler {
 
             return;
         }
+
+        fileS.printSummary();
         Thread.sleep(1000);
     }
 
@@ -69,6 +64,8 @@ public class Handler {
             Thread.sleep(1000);
             return;
         }
+
+        domainS.printSummary();
         Thread.sleep(1000);
     }
 
@@ -93,6 +90,8 @@ public class Handler {
         if (urlS.getObjectId() != null) {
             urlS.getReport(apikey);
         }
+
+        urlS.printSummary();
         Thread.sleep(1000);
     }
 
@@ -112,6 +111,7 @@ public class Handler {
             return;
         }
 
+        ipS.printSummary();
         Thread.sleep(1000);
     }
 }

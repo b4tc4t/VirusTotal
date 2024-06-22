@@ -46,7 +46,6 @@ public class DomainScan extends Scan {
         if (getObjectId() == null)
             return;
 
-        //GET REPORT req
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("https://www.virustotal.com/api/v3/domains/" + getObjectId()))
                 .header("accept", "application/json")
@@ -58,13 +57,10 @@ public class DomainScan extends Scan {
         JSONObject json = new JSONObject(response.body());
         setJson(json);
 
-        //SET ATTRIBUTES
         try {
-            //GET BASIC INFO
             setName(json.getJSONObject("data").getString("id"));
             setObjectId(getName());
 
-            //GET ANALYSIS
             setTime(json.getJSONObject("data").getJSONObject(GET_ATTR).getInt("last_analysis_date"));
             setHarmless(json.getJSONObject("data").getJSONObject(GET_ATTR).getJSONObject(LAST_STATS).getInt(HARM));
             setUndetected(json.getJSONObject("data").getJSONObject(GET_ATTR).getJSONObject(LAST_STATS).getInt("undetected"));
@@ -75,7 +71,6 @@ public class DomainScan extends Scan {
             try {
                 System.out.println("ERROR: " + json.getJSONObject("error").getString("message") + " (" + json.getJSONObject("error").getString("code") + ")");
             } catch (Exception ee) {
-                //check if analysis not finished
                 if (e.getMessage().equals("JSONObject[\"last_analysis_date\"] not found."))
                     System.out.println("WARNING: No finished analysis found!");
                 else

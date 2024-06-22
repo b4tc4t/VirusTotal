@@ -30,7 +30,6 @@ public class URLScan extends Scan {
     private static final String MAL = "malicious";
     private static final String ENGINE = "engine_name";
 
-    //post URL
     @Override
     public void post(String apikey) throws IOException, InterruptedException {
         HttpClient client = HttpClient.newBuilder().build();
@@ -62,13 +61,11 @@ public class URLScan extends Scan {
         }
     }
 
-
     @Override
     public void getReport(String apikey) throws IOException, InterruptedException {
         if (getObjectId() == null)
             return;
 
-        //SEND REANALYSE req if already get report before
         if (getJson() != null) {
             HttpRequest rescan = HttpRequest.newBuilder()
                     .uri(URI.create("https://www.virustotal.com/api/v3/urls/" + getObjectId() + "/analyse"))
@@ -98,12 +95,10 @@ public class URLScan extends Scan {
         HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
         JSONObject json = new JSONObject(response.body());
         setJson(json);
-        //set attributes
+
         try {
-            //GET BASIC INFO
             setName(json.getJSONObject("data").getJSONObject(GET_ATTR).getString("url"));
 
-            //GET ANALYSIS
             setTime(json.getJSONObject("data").getJSONObject(GET_ATTR).getInt("last_analysis_date"));
             setHarmless(json.getJSONObject("data").getJSONObject(GET_ATTR).getJSONObject(LAST_STATS).getInt(HARM));
             setUndetected(json.getJSONObject("data").getJSONObject(GET_ATTR).getJSONObject(LAST_STATS).getInt("undetected"));
@@ -112,15 +107,13 @@ public class URLScan extends Scan {
             setTimeout(json.getJSONObject("data").getJSONObject(GET_ATTR).getJSONObject(LAST_STATS).getInt("timeout"));
         } catch (Exception e) {
             try {
-                //check if analysis not finished
                 if (json.getJSONObject(ERR_ATTR).getString("code").equals("NotFoundError"))
-                    System.out.println("WARNING: No finished analysis found!");
+                    System.out.println("No finished analysis found!");
                 else
                     System.out.println(ERR + json.getJSONObject(ERR_ATTR).getString(ERR_MESS) + " (" + json.getJSONObject(ERR_ATTR).getString("code") + ")");
             } catch (Exception ee) {
-                //check if analysis not finished
                 if (e.getMessage().equals("JSONObject[\"last_analysis_date\"] not found."))
-                    System.out.println("WARNING: No finished analysis found!");
+                    System.out.println("No finished analysis found!");
                 else
                     System.out.println(ERR + e.getMessage());
             }

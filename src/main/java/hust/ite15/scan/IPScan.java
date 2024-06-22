@@ -19,8 +19,7 @@ import java.util.regex.*;
 import org.json.JSONObject;
 
 public class IPScan extends Scan {
-    //IP Address validation
-    private static final String IP_ADDRESS_PATTERN = "^((2[0-4]\\d|[01]?\\d{1,2})\\.){3}(2[0-4]\\d|[01]?\\d{1,2})$";
+    private static final String IP_ADDRESS_PATTERN = "^((25[0-5]|(2[0-4]|1\\d|[1-9]|)\\d)\\.?\\b){4}$";
 
     private static final Pattern pattern = Pattern.compile(IP_ADDRESS_PATTERN);
 
@@ -47,7 +46,6 @@ public class IPScan extends Scan {
         if (getObjectId() == null)
             return;
 
-        //GET REPORT req
         HttpRequest request = HttpRequest.newBuilder()
                 .uri(URI.create("https://www.virustotal.com/api/v3/ip_addresses/" + getObjectId()))
                 .header("accept", "application/json")
@@ -59,13 +57,10 @@ public class IPScan extends Scan {
         JSONObject json = new JSONObject(response.body());
         setJson(json);
 
-        //SET ATTRIBUTES
         try {
-            //GET BASIC INFO
             setName(json.getJSONObject("data").getJSONObject(GET_ATTR).getString("network"));
             setObjectId(json.getJSONObject("data").getString("id"));
 
-            //GET ANALYSIS
             setTime(json.getJSONObject("data").getJSONObject(GET_ATTR).getInt("last_analysis_date"));
             setHarmless(json.getJSONObject("data").getJSONObject(GET_ATTR).getJSONObject(LAST_STATS).getInt(HARM));
             setUndetected(json.getJSONObject("data").getJSONObject(GET_ATTR).getJSONObject(LAST_STATS).getInt("undetected"));
@@ -76,7 +71,6 @@ public class IPScan extends Scan {
             try {
                 System.out.println("ERROR: " + json.getJSONObject("error").getString("message") + " (" + json.getJSONObject("error").getString("code") + ")");
             } catch (Exception ee) {
-                //check if analysis not finished
                 if (e.getMessage().equals("JSONObject[\"last_analysis_date\"] not found."))
                     System.out.println("WARNING: No finished analysis found!");
                 else
