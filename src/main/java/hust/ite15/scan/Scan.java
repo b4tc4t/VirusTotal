@@ -12,16 +12,16 @@ import java.time.Instant;
 import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 
-//import org.apache.poi.xssf.usermodel.XSSFFormulaEvaluator;
-//import org.apache.poi.xssf.usermodel.XSSFSheet;
-//import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.xssf.usermodel.XSSFFormulaEvaluator;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.json.JSONObject;
-//import org.knowm.xchart.*;
-//import org.knowm.xchart.style.Styler.*;
+import org.knowm.xchart.*;
+import org.knowm.xchart.style.Styler.*;
 
 public abstract class Scan {
 
-    private static final String ROOT_PATH = new File(System.getProperty("user.dir")).getParent() + "/Project1/vtapi";
+    private static final String ROOT_PATH = new File(System.getProperty("user.dir")).getParent() + "/totalprotekt/report/";
     private String name = null;
     private String objectId = null;
     private String analysisId = null;
@@ -74,7 +74,8 @@ public abstract class Scan {
             System.out.println("ERROR: No report found.");
             return false;
         }
-        try (FileWriter writer = new FileWriter(ROOT_PATH + "/data/JSON/" + genSaveName("report", ".json"))) {
+//        + "/data
+        try (FileWriter writer = new FileWriter(ROOT_PATH  + "/JSON/" + genSaveName("report", ".json"))) {
             writer.write(getJson().toString(4));
             return true;
         } catch (Exception e) {
@@ -87,15 +88,15 @@ public abstract class Scan {
         return false;
     }
 
-//    public boolean toExcelReport() {
-//        if (getObjectId() == null || getJson() == null) {
-//            System.out.println("ERROR: No report found.");
-//            return false;
-//        }
-//        if (getTime() == 0) {
-//            System.out.println("WARNING: No finished analysis found!\n(Please wait a few seconds and update)");
-//            return false;
-//        }
+    public boolean toExcelReport(String type) {
+        if (getObjectId() == null || getJson() == null) {
+            System.out.println("ERROR: No report found.");
+            return false;
+        }
+        if (getTime() == 0) {
+            System.out.println("WARNING: No finished analysis found!\n(Please wait a few seconds and update)");
+            return false;
+        }
 //        String type = null;
 //        if (this instanceof FileScan) {
 //            type = "FILE";
@@ -109,62 +110,73 @@ public abstract class Scan {
 //            System.out.println("ERROR: Unsupported Type");
 //            return false;
 //        }
-//
-//        try {
-//            FileInputStream file = new FileInputStream(new File(ROOT_PATH + "/src/vt-template.xlsx"));
-//            XSSFWorkbook template = new XSSFWorkbook(file);
-//            XSSFWorkbook workbook = new XSSFWorkbook(template.getPackage());
-//            file.close();
-//            XSSFSheet worksheet = workbook.getSheet("DATA");
-//
-//            writeExcel(worksheet);
-//            XSSFFormulaEvaluator.evaluateAllFormulaCells(workbook);
-//            List<Integer> sheets = new ArrayList<>(Arrays.asList(4, 3, 2, 1));
-//            sheets.remove(Integer.valueOf(workbook.getSheetIndex(type+" SUMMARY")));
-//            for (Integer sheet: sheets) {
-//                workbook.removeSheetAt(sheet);
-//            }
-//
-//            FileOutputStream out = new FileOutputStream(new File(ROOT_PATH + "/data/CSV/" + genSaveName(type, ".xlsx")));
-//            workbook.write(out);
-//            template.close();
-//            workbook.close();
-//            out.close();
-//            return true;
-//        } catch (Exception ignored) {}
-//        return false;
-//    }
 
-//    public void writeExcel(XSSFSheet sheet) {
-//        if (sheet == null) {
-//            System.out.println("ERROR: Can't write anything.");
-//        }
-//    }
-//
-//    public PieChart toChart() throws IOException {
-//        if (getTime() == 0) {
-//            System.out.println("WARNING: No finished analysis found!\n(Please wait a few seconds and update)");
-//            return null;
-//        }
-//        // Create Chart
-//        DateTimeFormatter dateformat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").withZone(ZoneId.systemDefault());
-//        String shortTime = dateformat.format(Instant.ofEpochSecond(time));
-//        PieChart chart = new PieChartBuilder().width(800).height(600).title(this.name + " ("+shortTime+")").theme(ChartTheme.GGPlot2).build();
-//
-//        // Customize Chart
-//        chart.getStyler().setLegendVisible(false);
-//        chart.getStyler().setPlotContentSize(.7);
-//        chart.getStyler().setStartAngleInDegrees(90);
-//
-//        // Series
-//        chart.addSeries("harmless", this.harmless);
-//        chart.addSeries("undetected", this.undetected);
-//        chart.addSeries("suspicious", this.suspicious);
-//        chart.addSeries("malicious", malicious);
-//        chart.addSeries("timeout", this.timeout);
-//
-//        return chart;
-//    }
+        try {
+            FileInputStream file = new FileInputStream(new File(ROOT_PATH + "/template/vt-template.xlsx"));
+            XSSFWorkbook template = new XSSFWorkbook(file);
+            XSSFWorkbook workbook = new XSSFWorkbook(template.getPackage());
+            file.close();
+            XSSFSheet worksheet = workbook.getSheet("DATA");
+
+            writeExcel(worksheet);
+            XSSFFormulaEvaluator.evaluateAllFormulaCells(workbook);
+            List<Integer> sheets = new ArrayList<>(Arrays.asList(4, 3, 2, 1));
+            sheets.remove(Integer.valueOf(workbook.getSheetIndex(type+" SUMMARY")));
+            for (Integer sheet: sheets) {
+                workbook.removeSheetAt(sheet);
+            }
+
+            FileOutputStream out = new FileOutputStream(new File(ROOT_PATH + "/XLSX/" + genSaveName(type, ".xlsx")));
+            workbook.write(out);
+            template.close();
+            workbook.close();
+            out.close();
+            return true;
+        } catch (Exception ignored) {}
+        return false;
+    }
+
+    public void writeExcel(XSSFSheet sheet) {
+        if (sheet == null) {
+            System.out.println("ERROR: Can't write anything.");
+        }
+    }
+
+    private PieChart toChart() throws IOException {
+        if (getTime() == 0) {
+            System.out.println("WARNING: No finished analysis found!\n(Please wait a few seconds and update)");
+            return null;
+        }
+        // Create Chart
+        DateTimeFormatter dateformat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").withZone(ZoneId.systemDefault());
+        String shortTime = dateformat.format(Instant.ofEpochSecond(time));
+        PieChart chart = new PieChartBuilder().width(800).height(600).title(this.name + " ("+shortTime+")").theme(ChartTheme.GGPlot2).build();
+
+        // Customize Chart
+        chart.getStyler().setLegendVisible(false);
+        chart.getStyler().setPlotContentSize(.7);
+        chart.getStyler().setStartAngleInDegrees(90);
+
+        // Series
+        chart.addSeries("harmless", this.harmless);
+        chart.addSeries("undetected", this.undetected);
+        chart.addSeries("suspicious", this.suspicious);
+        chart.addSeries("malicious", malicious);
+        chart.addSeries("timeout", this.timeout);
+
+        return chart;
+    }
+
+    public boolean writeChart() throws IOException{
+        PieChart chart = toChart();
+        if (chart == null){
+
+            return false;
+        }
+        BitmapEncoder.saveBitmapWithDPI(chart,ROOT_PATH + "/CHART/" + genSaveName("Chart"), BitmapEncoder.BitmapFormat.PNG, 300);
+        System.out.println("...Saved Chart!\n");
+        return true;
+    }
 
     public boolean isValid() {
         return (this.name!=null);

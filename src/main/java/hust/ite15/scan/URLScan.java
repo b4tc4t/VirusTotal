@@ -11,9 +11,9 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
-//import org.apache.poi.ss.usermodel.Row;
-//import org.apache.poi.ss.util.CellUtil;
-//import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.util.CellUtil;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -120,115 +120,115 @@ public class URLScan extends Scan {
         }
     }
 
-//    @Override
-//    public void writeExcel(XSSFSheet sheet) {
-//        if (sheet == null) {
-//            System.out.println("ERROR: Can't write anything.");
-//            return;
-//        }
-//
-//        //WRITE BASIC INFO
-//        Row row = sheet.getRow(1);
-//        CellUtil.getCell(row, 0).setCellValue("type");
-//        CellUtil.getCell(row, 1).setCellValue("id");
-//        CellUtil.getCell(row, 2).setCellValue("name");
-//        CellUtil.getCell(row, 9).setCellValue("undetected");
-//        CellUtil.getCell(row, 10).setCellValue(HARM);
-//        CellUtil.getCell(row, 11).setCellValue("suspicious");
-//        CellUtil.getCell(row, 12).setCellValue(MAL);
-//        CellUtil.getCell(row, 13).setCellValue("timeout");
-//        CellUtil.getCell(row, 15).setCellValue("last_analysis_date");
-//
-//        row = sheet.getRow(2);
-//        CellUtil.getCell(row, 0).setCellValue("url");
-//        CellUtil.getCell(row, 1).setCellValue(getObjectId());
-//        CellUtil.getCell(row, 2).setCellValue(getName());
-//        CellUtil.getCell(row, 9).setCellValue(getUndetected());
-//        CellUtil.getCell(row, 10).setCellValue(getHarmless());
-//        CellUtil.getCell(row, 11).setCellValue(getSuspicious());
-//        CellUtil.getCell(row, 12).setCellValue(getMalicious());
-//        CellUtil.getCell(row, 13).setCellValue(getTimeout());
-//        CellUtil.getCell(row, 15).setCellValue(getTime());
-//
-//        //WRITE ANALYSIS RESULTS
-//        row = sheet.getRow(1);
-//        CellUtil.getCell(row, 16).setCellValue(ENGINE);
-//        CellUtil.getCell(row, 17).setCellValue("category");
-//        CellUtil.getCell(row, 18).setCellValue("result");
-//
-//        List<JSONObject> engines = new ArrayList<>();
-//        JSONObject json = getJson().getJSONObject("data").getJSONObject(GET_ATTR).getJSONObject("last_analysis_results");
-//        Iterator<String> keys = json.keys();
-//        while (keys.hasNext()) {
-//            JSONObject nestedJsonObject = json.getJSONObject(keys.next());
-//            engines.add(nestedJsonObject);
-//        }
-//        Collections.sort(engines, (j1, j2) -> {
-//            String name1 = (String) j1.get(ENGINE);
-//            String name2 = (String) j2.get(ENGINE);
-//            return name1.compareToIgnoreCase(name2);
-//        });
-//
-//        int iRow = 2;
-//        for (JSONObject engine: engines) {
-//            row = sheet.getRow(iRow);
-//            if (row == null)
-//                row = sheet.createRow(iRow);
-//            CellUtil.getCell(row, 16).setCellValue(engine.getString(ENGINE));
-//            CellUtil.getCell(row, 17).setCellValue(engine.getString("category"));
-//            if (!engine.isNull("result")) {
-//                CellUtil.getCell(row, 18).setCellValue(engine.getString("result"));
-//            }
-//            iRow++;
-//        }
-//        if (iRow < 101) {
-//            row = sheet.getRow(101);
-//            CellUtil.getCell(row, 16).setBlank();
-//        }
-//
-//        // WRITE OTHER URL INFOS
-//        row = sheet.getRow(1);
-//        CellUtil.getCell(row, 3).setCellValue("first_submission_date");
-//        CellUtil.getCell(row, 4).setCellValue("last_submission_date");
-//        CellUtil.getCell(row, 5).setCellValue("last_final_url");
-//        CellUtil.getCell(row, 8).setCellValue("threat_names");
-//        CellUtil.getCell(row, 19).setCellValue("reputation");
-//        CellUtil.getCell(row, 20).setCellValue(HARM);
-//        CellUtil.getCell(row, 21).setCellValue(MAL);
-//
-//        json = getJson().getJSONObject("data").getJSONObject(GET_ATTR);
-//        row = sheet.getRow(2);
-//        CellUtil.getCell(row, 3).setCellValue(json.getLong("first_submission_date"));
-//        CellUtil.getCell(row, 4).setCellValue(json.getLong("last_submission_date"));
-//        CellUtil.getCell(row, 5).setCellValue(json.getString("last_final_url"));
-//        CellUtil.getCell(row, 19).setCellValue(json.getInt("reputation"));
-//        CellUtil.getCell(row, 20).setCellValue(json.getJSONObject("total_votes").getInt(HARM));
-//        CellUtil.getCell(row, 21).setCellValue(json.getJSONObject("total_votes").getInt(MAL));
-//        //Write URL threat names
-//        JSONArray names = json.getJSONArray("threat_names");
-//        iRow = 2;
-//        for (int i = 0; i < names.length(); i++) {
-//            row = sheet.getRow(iRow);
-//            CellUtil.getCell(row, 8).setCellValue(names.getString(i));
-//            iRow++;
-//        }
-//
-//        // WRITE CATEGORIES
-//        row = sheet.getRow(1);
-//        CellUtil.getCell(row, 6).setCellValue("categorizers");
-//        CellUtil.getCell(row, 7).setCellValue("categories");
-//
-//        json = getJson().getJSONObject("data").getJSONObject(GET_ATTR).getJSONObject("categories");
-//        keys = json.keys();
-//        iRow = 2;
-//        while (keys.hasNext()) {
-//            String key = keys.next();
-//            row = sheet.getRow(iRow);
-//            if (row == null)
-//                row = sheet.createRow(iRow);
-//            CellUtil.getCell(row, 6).setCellValue(key);
-//            CellUtil.getCell(row, 7).setCellValue(json.getString(key));
-//            iRow++;
-//        }
-//    }
+    @Override
+    public void writeExcel(XSSFSheet sheet) {
+        if (sheet == null) {
+            System.out.println("ERROR: Can't write anything.");
+            return;
+        }
+
+        //WRITE BASIC INFO
+        Row row = sheet.getRow(1);
+        CellUtil.getCell(row, 0).setCellValue("type");
+        CellUtil.getCell(row, 1).setCellValue("id");
+        CellUtil.getCell(row, 2).setCellValue("name");
+        CellUtil.getCell(row, 9).setCellValue("undetected");
+        CellUtil.getCell(row, 10).setCellValue(HARM);
+        CellUtil.getCell(row, 11).setCellValue("suspicious");
+        CellUtil.getCell(row, 12).setCellValue(MAL);
+        CellUtil.getCell(row, 13).setCellValue("timeout");
+        CellUtil.getCell(row, 15).setCellValue("last_analysis_date");
+
+        row = sheet.getRow(2);
+        CellUtil.getCell(row, 0).setCellValue("url");
+        CellUtil.getCell(row, 1).setCellValue(getObjectId());
+        CellUtil.getCell(row, 2).setCellValue(getName());
+        CellUtil.getCell(row, 9).setCellValue(getUndetected());
+        CellUtil.getCell(row, 10).setCellValue(getHarmless());
+        CellUtil.getCell(row, 11).setCellValue(getSuspicious());
+        CellUtil.getCell(row, 12).setCellValue(getMalicious());
+        CellUtil.getCell(row, 13).setCellValue(getTimeout());
+        CellUtil.getCell(row, 15).setCellValue(getTime());
+
+        //WRITE ANALYSIS RESULTS
+        row = sheet.getRow(1);
+        CellUtil.getCell(row, 16).setCellValue(ENGINE);
+        CellUtil.getCell(row, 17).setCellValue("category");
+        CellUtil.getCell(row, 18).setCellValue("result");
+
+        List<JSONObject> engines = new ArrayList<>();
+        JSONObject json = getJson().getJSONObject("data").getJSONObject(GET_ATTR).getJSONObject("last_analysis_results");
+        Iterator<String> keys = json.keys();
+        while (keys.hasNext()) {
+            JSONObject nestedJsonObject = json.getJSONObject(keys.next());
+            engines.add(nestedJsonObject);
+        }
+        Collections.sort(engines, (j1, j2) -> {
+            String name1 = (String) j1.get(ENGINE);
+            String name2 = (String) j2.get(ENGINE);
+            return name1.compareToIgnoreCase(name2);
+        });
+
+        int iRow = 2;
+        for (JSONObject engine: engines) {
+            row = sheet.getRow(iRow);
+            if (row == null)
+                row = sheet.createRow(iRow);
+            CellUtil.getCell(row, 16).setCellValue(engine.getString(ENGINE));
+            CellUtil.getCell(row, 17).setCellValue(engine.getString("category"));
+            if (!engine.isNull("result")) {
+                CellUtil.getCell(row, 18).setCellValue(engine.getString("result"));
+            }
+            iRow++;
+        }
+        if (iRow < 101) {
+            row = sheet.getRow(101);
+            CellUtil.getCell(row, 16).setBlank();
+        }
+
+        // WRITE OTHER URL INFOS
+        row = sheet.getRow(1);
+        CellUtil.getCell(row, 3).setCellValue("first_submission_date");
+        CellUtil.getCell(row, 4).setCellValue("last_submission_date");
+        CellUtil.getCell(row, 5).setCellValue("last_final_url");
+        CellUtil.getCell(row, 8).setCellValue("threat_names");
+        CellUtil.getCell(row, 19).setCellValue("reputation");
+        CellUtil.getCell(row, 20).setCellValue(HARM);
+        CellUtil.getCell(row, 21).setCellValue(MAL);
+
+        json = getJson().getJSONObject("data").getJSONObject(GET_ATTR);
+        row = sheet.getRow(2);
+        CellUtil.getCell(row, 3).setCellValue(json.getLong("first_submission_date"));
+        CellUtil.getCell(row, 4).setCellValue(json.getLong("last_submission_date"));
+        CellUtil.getCell(row, 5).setCellValue(json.getString("last_final_url"));
+        CellUtil.getCell(row, 19).setCellValue(json.getInt("reputation"));
+        CellUtil.getCell(row, 20).setCellValue(json.getJSONObject("total_votes").getInt(HARM));
+        CellUtil.getCell(row, 21).setCellValue(json.getJSONObject("total_votes").getInt(MAL));
+        //Write URL threat names
+        JSONArray names = json.getJSONArray("threat_names");
+        iRow = 2;
+        for (int i = 0; i < names.length(); i++) {
+            row = sheet.getRow(iRow);
+            CellUtil.getCell(row, 8).setCellValue(names.getString(i));
+            iRow++;
+        }
+
+        // WRITE CATEGORIES
+        row = sheet.getRow(1);
+        CellUtil.getCell(row, 6).setCellValue("categorizers");
+        CellUtil.getCell(row, 7).setCellValue("categories");
+
+        json = getJson().getJSONObject("data").getJSONObject(GET_ATTR).getJSONObject("categories");
+        keys = json.keys();
+        iRow = 2;
+        while (keys.hasNext()) {
+            String key = keys.next();
+            row = sheet.getRow(iRow);
+            if (row == null)
+                row = sheet.createRow(iRow);
+            CellUtil.getCell(row, 6).setCellValue(key);
+            CellUtil.getCell(row, 7).setCellValue(json.getString(key));
+            iRow++;
+        }
+    }
 }

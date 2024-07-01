@@ -24,14 +24,14 @@ import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
-//import org.apache.poi.ss.usermodel.Row;
-//import org.apache.poi.ss.util.CellUtil;
-//import org.apache.poi.xssf.usermodel.XSSFSheet;
-//import org.json.JSONArray;
-//import org.json.JSONException;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.util.CellUtil;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.json.JSONArray;
+import org.json.JSONException;
 import org.json.JSONObject;
-//import org.knowm.xchart.*;
-//import org.knowm.xchart.style.Styler.*;
+import org.knowm.xchart.*;
+import org.knowm.xchart.style.Styler.*;
 
 public class FileScan extends Scan {
     private String filepath = null;
@@ -188,141 +188,141 @@ public class FileScan extends Scan {
         System.out.println("Timeout:\t" + getTimeout());
     }
 
-//    @Override
-//    public void writeExcel(XSSFSheet sheet) {
-//        if (sheet == null) {
-//            System.out.println("ERROR: Can't write anything.");
-//            return;
-//        }
-//
-//        //WRITE BASIC INFO
-//        Row row = sheet.getRow(1);
-//        CellUtil.getCell(row, 0).setCellValue("type");
-//        CellUtil.getCell(row, 1).setCellValue("id");
-//        CellUtil.getCell(row, 2).setCellValue("name");
-//        CellUtil.getCell(row, 9).setCellValue(UNDETECTED);
-//        CellUtil.getCell(row, 10).setCellValue(HARM);
-//        CellUtil.getCell(row, 11).setCellValue(SUSPICIOUS);
-//        CellUtil.getCell(row, 12).setCellValue(MAL);
-//        CellUtil.getCell(row, 13).setCellValue(TYPE_UNSUPPORTED);
-//        CellUtil.getCell(row, 14).setCellValue(TIME_OUT);
-//        CellUtil.getCell(row, 15).setCellValue("last_analysis_date");
-//
-//        row = sheet.getRow(2);
-//        CellUtil.getCell(row, 0).setCellValue("file");
-//        CellUtil.getCell(row, 1).setCellValue(getObjectId());
-//        CellUtil.getCell(row, 2).setCellValue(getName());
-//        CellUtil.getCell(row, 9).setCellValue(getUndetected());
-//        CellUtil.getCell(row, 10).setCellValue(getHarmless());
-//        CellUtil.getCell(row, 11).setCellValue(getSuspicious());
-//        CellUtil.getCell(row, 12).setCellValue(getMalicious());
-//        CellUtil.getCell(row, 13).setCellValue(typeUnsup);
-//        CellUtil.getCell(row, 14).setCellValue(getTimeout());
-//        CellUtil.getCell(row, 15).setCellValue(getTime());
-//
-//        //WRITE ANALYSIS RESULTS
-//        row = sheet.getRow(1);
-//        CellUtil.getCell(row, 16).setCellValue(ENGINE);
-//        CellUtil.getCell(row, 17).setCellValue("category");
-//        CellUtil.getCell(row, 18).setCellValue("result");
-//
-//        List<JSONObject> engines = new ArrayList<>();
-//        JSONObject json = getJson().getJSONObject("data").getJSONObject(GET_ATTR).getJSONObject("last_analysis_results");
-//        Iterator<String> keys = json.keys();
-//        while (keys.hasNext()) {
-//            JSONObject nestedJsonObject = json.getJSONObject(keys.next());
-//            engines.add(nestedJsonObject);
-//        }
-//        Collections.sort(engines, (j1, j2) -> {
-//            String name1 = (String) j1.get(ENGINE);
-//            String name2 = (String) j2.get(ENGINE);
-//            return name1.compareToIgnoreCase(name2);
-//        });
-//
-//
-//        int iRow = 2;
-//        for (JSONObject engine: engines) {
-//            row = sheet.getRow(iRow);
-//            if (row == null)
-//                row = sheet.createRow(iRow);
-//            CellUtil.getCell(row, 16).setCellValue(engine.getString(ENGINE));
-//            CellUtil.getCell(row, 17).setCellValue(engine.getString("category"));
-//            if (!engine.isNull("result")) {
-//                CellUtil.getCell(row, 18).setCellValue(engine.getString("result"));
-//            }
-//            iRow++;
-//        }
-//        if (iRow < 101) {
-//            row = sheet.getRow(101);
-//            CellUtil.getCell(row, 16).setBlank();
-//        }
-//
-//        // WRITE OTHER FILE INFOS
-//        row = sheet.getRow(1);
-//        CellUtil.getCell(row, 3).setCellValue("first_submission_date");
-//        CellUtil.getCell(row, 4).setCellValue("last_submission_date");
-//        CellUtil.getCell(row, 5).setCellValue("size");
-//        CellUtil.getCell(row, 6).setCellValue("type_description");
-//        CellUtil.getCell(row, 7).setCellValue("type_tags");
-//        CellUtil.getCell(row, 8).setCellValue("alias");
-//        CellUtil.getCell(row, 19).setCellValue("reputation");
-//        CellUtil.getCell(row, 20).setCellValue(HARM);
-//        CellUtil.getCell(row, 21).setCellValue(MAL);
-//        CellUtil.getCell(row, 22).setCellValue("magic");
-//
-//        json = getJson().getJSONObject("data").getJSONObject(GET_ATTR);
-//        row = sheet.getRow(2);
-//        CellUtil.getCell(row, 3).setCellValue(json.getLong("first_submission_date"));
-//        CellUtil.getCell(row, 4).setCellValue(json.getLong("last_submission_date"));
-//        CellUtil.getCell(row, 5).setCellValue(size);
-//        CellUtil.getCell(row, 6).setCellValue(json.getString("type_description"));
-//        CellUtil.getCell(row, 19).setCellValue(json.getInt("reputation"));
-//        CellUtil.getCell(row, 20).setCellValue(json.getJSONObject("total_votes").getInt(HARM));
-//        CellUtil.getCell(row, 21).setCellValue(json.getJSONObject("total_votes").getInt(MAL));
-//        CellUtil.getCell(row, 22).setCellValue(json.getString("magic"));
-//        //Write File tags
-//        JSONArray names = json.getJSONArray("type_tags");
-//        iRow = 2;
-//        for (int i = 0; i < names.length(); i++) {
-//            row = sheet.getRow(iRow);
-//            CellUtil.getCell(row, 7).setCellValue(names.getString(i));
-//            iRow++;
-//        }
-//        //Write File alias
-//        names = json.getJSONArray("names");
-//        iRow = 2;
-//        for (int i = 0; i < names.length(); i++) {
-//            row = sheet.getRow(iRow);
-//            CellUtil.getCell(row, 8).setCellValue(names.getString(i));
-//            iRow++;
-//        }
-//    }
-//
-//    public PieChart toChart() throws IOException {
-//        if (getTime() == 0) {
-//            System.out.println("WARNING: No finished analysis found!\n(Please wait a few seconds and update)");
-//            return null;
-//        }
-//        // Create Chart
-//        DateTimeFormatter dateformat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").withZone(ZoneId.systemDefault());
-//        String shortTime = dateformat.format(Instant.ofEpochSecond(getTime()));
-//        PieChart chart = new PieChartBuilder().width(800).height(600).title(getName() + " ("+shortTime+")").theme(ChartTheme.GGPlot2).build();
-//
-//        // Customize Chart
-//        chart.getStyler().setLegendVisible(false);
-//        chart.getStyler().setPlotContentSize(.7);
-//        chart.getStyler().setStartAngleInDegrees(90);
-//
-//        // Series
-//        chart.addSeries(HARM, getHarmless());
-//        chart.addSeries(UNDETECTED, getUndetected());
-//        chart.addSeries(SUSPICIOUS, getSuspicious());
-//        chart.addSeries(MAL, getMalicious());
-//        chart.addSeries(TIME_OUT, getTimeout());
-//        chart.addSeries(TYPE_UNSUPPORTED, typeUnsup);
-//
-//        return chart;
-//    }
+    @Override
+    public void writeExcel(XSSFSheet sheet) {
+        if (sheet == null) {
+            System.out.println("ERROR: Can't write anything.");
+            return;
+        }
+
+        //WRITE BASIC INFO
+        Row row = sheet.getRow(1);
+        CellUtil.getCell(row, 0).setCellValue("type");
+        CellUtil.getCell(row, 1).setCellValue("id");
+        CellUtil.getCell(row, 2).setCellValue("name");
+        CellUtil.getCell(row, 9).setCellValue(UNDETECTED);
+        CellUtil.getCell(row, 10).setCellValue(HARM);
+        CellUtil.getCell(row, 11).setCellValue(SUSPICIOUS);
+        CellUtil.getCell(row, 12).setCellValue(MAL);
+        CellUtil.getCell(row, 13).setCellValue(TYPE_UNSUPPORTED);
+        CellUtil.getCell(row, 14).setCellValue(TIME_OUT);
+        CellUtil.getCell(row, 15).setCellValue("last_analysis_date");
+
+        row = sheet.getRow(2);
+        CellUtil.getCell(row, 0).setCellValue("file");
+        CellUtil.getCell(row, 1).setCellValue(getObjectId());
+        CellUtil.getCell(row, 2).setCellValue(getName());
+        CellUtil.getCell(row, 9).setCellValue(getUndetected());
+        CellUtil.getCell(row, 10).setCellValue(getHarmless());
+        CellUtil.getCell(row, 11).setCellValue(getSuspicious());
+        CellUtil.getCell(row, 12).setCellValue(getMalicious());
+        CellUtil.getCell(row, 13).setCellValue(typeUnsup);
+        CellUtil.getCell(row, 14).setCellValue(getTimeout());
+        CellUtil.getCell(row, 15).setCellValue(getTime());
+
+        //WRITE ANALYSIS RESULTS
+        row = sheet.getRow(1);
+        CellUtil.getCell(row, 16).setCellValue(ENGINE);
+        CellUtil.getCell(row, 17).setCellValue("category");
+        CellUtil.getCell(row, 18).setCellValue("result");
+
+        List<JSONObject> engines = new ArrayList<>();
+        JSONObject json = getJson().getJSONObject("data").getJSONObject(GET_ATTR).getJSONObject("last_analysis_results");
+        Iterator<String> keys = json.keys();
+        while (keys.hasNext()) {
+            JSONObject nestedJsonObject = json.getJSONObject(keys.next());
+            engines.add(nestedJsonObject);
+        }
+        Collections.sort(engines, (j1, j2) -> {
+            String name1 = (String) j1.get(ENGINE);
+            String name2 = (String) j2.get(ENGINE);
+            return name1.compareToIgnoreCase(name2);
+        });
+
+
+        int iRow = 2;
+        for (JSONObject engine: engines) {
+            row = sheet.getRow(iRow);
+            if (row == null)
+                row = sheet.createRow(iRow);
+            CellUtil.getCell(row, 16).setCellValue(engine.getString(ENGINE));
+            CellUtil.getCell(row, 17).setCellValue(engine.getString("category"));
+            if (!engine.isNull("result")) {
+                CellUtil.getCell(row, 18).setCellValue(engine.getString("result"));
+            }
+            iRow++;
+        }
+        if (iRow < 101) {
+            row = sheet.getRow(101);
+            CellUtil.getCell(row, 16).setBlank();
+        }
+
+        // WRITE OTHER FILE INFOS
+        row = sheet.getRow(1);
+        CellUtil.getCell(row, 3).setCellValue("first_submission_date");
+        CellUtil.getCell(row, 4).setCellValue("last_submission_date");
+        CellUtil.getCell(row, 5).setCellValue("size");
+        CellUtil.getCell(row, 6).setCellValue("type_description");
+        CellUtil.getCell(row, 7).setCellValue("type_tags");
+        CellUtil.getCell(row, 8).setCellValue("alias");
+        CellUtil.getCell(row, 19).setCellValue("reputation");
+        CellUtil.getCell(row, 20).setCellValue(HARM);
+        CellUtil.getCell(row, 21).setCellValue(MAL);
+        CellUtil.getCell(row, 22).setCellValue("magic");
+
+        json = getJson().getJSONObject("data").getJSONObject(GET_ATTR);
+        row = sheet.getRow(2);
+        CellUtil.getCell(row, 3).setCellValue(json.getLong("first_submission_date"));
+        CellUtil.getCell(row, 4).setCellValue(json.getLong("last_submission_date"));
+        CellUtil.getCell(row, 5).setCellValue(size);
+        CellUtil.getCell(row, 6).setCellValue(json.getString("type_description"));
+        CellUtil.getCell(row, 19).setCellValue(json.getInt("reputation"));
+        CellUtil.getCell(row, 20).setCellValue(json.getJSONObject("total_votes").getInt(HARM));
+        CellUtil.getCell(row, 21).setCellValue(json.getJSONObject("total_votes").getInt(MAL));
+        CellUtil.getCell(row, 22).setCellValue(json.getString("magic"));
+        //Write File tags
+        JSONArray names = json.getJSONArray("type_tags");
+        iRow = 2;
+        for (int i = 0; i < names.length(); i++) {
+            row = sheet.getRow(iRow);
+            CellUtil.getCell(row, 7).setCellValue(names.getString(i));
+            iRow++;
+        }
+        //Write File alias
+        names = json.getJSONArray("names");
+        iRow = 2;
+        for (int i = 0; i < names.length(); i++) {
+            row = sheet.getRow(iRow);
+            CellUtil.getCell(row, 8).setCellValue(names.getString(i));
+            iRow++;
+        }
+    }
+
+    public PieChart toChart() throws IOException {
+        if (getTime() == 0) {
+            System.out.println("WARNING: No finished analysis found!\n(Please wait a few seconds and update)");
+            return null;
+        }
+        // Create Chart
+        DateTimeFormatter dateformat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").withZone(ZoneId.systemDefault());
+        String shortTime = dateformat.format(Instant.ofEpochSecond(getTime()));
+        PieChart chart = new PieChartBuilder().width(800).height(600).title(getName() + " ("+shortTime+")").theme(ChartTheme.GGPlot2).build();
+
+        // Customize Chart
+        chart.getStyler().setLegendVisible(false);
+        chart.getStyler().setPlotContentSize(.7);
+        chart.getStyler().setStartAngleInDegrees(90);
+
+        // Series
+        chart.addSeries(HARM, getHarmless());
+        chart.addSeries(UNDETECTED, getUndetected());
+        chart.addSeries(SUSPICIOUS, getSuspicious());
+        chart.addSeries(MAL, getMalicious());
+        chart.addSeries(TIME_OUT, getTimeout());
+        chart.addSeries(TYPE_UNSUPPORTED, typeUnsup);
+
+        return chart;
+    }
 
     private String getUploadURL(String apikey) throws IOException, InterruptedException {
         //Get a URL for uploading files larger than 32MB
