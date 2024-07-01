@@ -1,0 +1,773 @@
+{"data": {
+    "links": {"self": "https://www.virustotal.com/api/v3/domains/facebook.com"},
+    "attributes": {
+        "crowdsourced_context": [{
+            "severity": "medium",
+            "details": "Quasar RAT botnet C2 domain (confidence level: 100%)",
+            "source": "ArcSight Threat Intelligence",
+            "title": "ThreatFox IOCs for 2023-09-10",
+            "timestamp": 1694380350
+        }],
+        "jarm": "27d27d27d0000001dc41d43d00041d1c5ac8aa552261ba8fd1aa9757c06fa5",
+        "registrar": "RegistrarSafe, LLC",
+        "last_analysis_stats": {
+            "malicious": 0,
+            "undetected": 26,
+            "suspicious": 0,
+            "harmless": 67,
+            "timeout": 0
+        },
+        "reputation": 161,
+        "creation_date": 859611600,
+        "last_analysis_results": {
+            "zvelo": {
+                "result": "unrated",
+                "method": "blacklist",
+                "engine_name": "zvelo",
+                "category": "undetected"
+            },
+            "Snort IP sample list": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "Snort IP sample list",
+                "category": "harmless"
+            },
+            "PrecisionSec": {
+                "result": "unrated",
+                "method": "blacklist",
+                "engine_name": "PrecisionSec",
+                "category": "undetected"
+            },
+            "Underworld": {
+                "result": "unrated",
+                "method": "blacklist",
+                "engine_name": "Underworld",
+                "category": "undetected"
+            },
+            "AutoShun": {
+                "result": "unrated",
+                "method": "blacklist",
+                "engine_name": "AutoShun",
+                "category": "undetected"
+            },
+            "benkow.cc": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "benkow.cc",
+                "category": "harmless"
+            },
+            "Abusix": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "Abusix",
+                "category": "harmless"
+            },
+            "Quttera": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "Quttera",
+                "category": "harmless"
+            },
+            "Heimdal Security": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "Heimdal Security",
+                "category": "harmless"
+            },
+            "securolytics": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "securolytics",
+                "category": "harmless"
+            },
+            "alphaMountain.ai": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "alphaMountain.ai",
+                "category": "harmless"
+            },
+            "Chong Lua Dao": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "Chong Lua Dao",
+                "category": "harmless"
+            },
+            "Phishing Database": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "Phishing Database",
+                "category": "harmless"
+            },
+            "PREBYTES": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "PREBYTES",
+                "category": "harmless"
+            },
+            "SafeToOpen": {
+                "result": "unrated",
+                "method": "blacklist",
+                "engine_name": "SafeToOpen",
+                "category": "undetected"
+            },
+            "Dr.Web": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "Dr.Web",
+                "category": "harmless"
+            },
+            "MalwarePatrol": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "MalwarePatrol",
+                "category": "harmless"
+            },
+            "EmergingThreats": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "EmergingThreats",
+                "category": "harmless"
+            },
+            "Threatsourcing": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "Threatsourcing",
+                "category": "harmless"
+            },
+            "Quick Heal": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "Quick Heal",
+                "category": "harmless"
+            },
+            "URLhaus": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "URLhaus",
+                "category": "harmless"
+            },
+            "Blueliv": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "Blueliv",
+                "category": "harmless"
+            },
+            "K7AntiVirus": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "K7AntiVirus",
+                "category": "harmless"
+            },
+            "desenmascara.me": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "desenmascara.me",
+                "category": "harmless"
+            },
+            "AlienVault": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "AlienVault",
+                "category": "harmless"
+            },
+            "Viettel Threat Intelligence": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "Viettel Threat Intelligence",
+                "category": "harmless"
+            },
+            "Xcitium Verdict Cloud": {
+                "result": "unrated",
+                "method": "blacklist",
+                "engine_name": "Xcitium Verdict Cloud",
+                "category": "undetected"
+            },
+            "GreenSnow": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "GreenSnow",
+                "category": "harmless"
+            },
+            "ZeroFox": {
+                "result": "unrated",
+                "method": "blacklist",
+                "engine_name": "ZeroFox",
+                "category": "undetected"
+            },
+            "Webroot": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "Webroot",
+                "category": "harmless"
+            },
+            "Sansec eComscan": {
+                "result": "unrated",
+                "method": "blacklist",
+                "engine_name": "Sansec eComscan",
+                "category": "undetected"
+            },
+            "Gridinsoft": {
+                "result": "unrated",
+                "method": "blacklist",
+                "engine_name": "Gridinsoft",
+                "category": "undetected"
+            },
+            "Phishtank": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "Phishtank",
+                "category": "harmless"
+            },
+            "SecureBrain": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "SecureBrain",
+                "category": "harmless"
+            },
+            "Sophos": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "Sophos",
+                "category": "harmless"
+            },
+            "CRDF": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "CRDF",
+                "category": "harmless"
+            },
+            "VIPRE": {
+                "result": "unrated",
+                "method": "blacklist",
+                "engine_name": "VIPRE",
+                "category": "undetected"
+            },
+            "ZeroCERT": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "ZeroCERT",
+                "category": "harmless"
+            },
+            "Malwared": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "Malwared",
+                "category": "harmless"
+            },
+            "PhishFort": {
+                "result": "unrated",
+                "method": "blacklist",
+                "engine_name": "PhishFort",
+                "category": "undetected"
+            },
+            "Lumu": {
+                "result": "unrated",
+                "method": "blacklist",
+                "engine_name": "Lumu",
+                "category": "undetected"
+            },
+            "AlphaSOC": {
+                "result": "unrated",
+                "method": "blacklist",
+                "engine_name": "AlphaSOC",
+                "category": "undetected"
+            },
+            "Emsisoft": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "Emsisoft",
+                "category": "harmless"
+            },
+            "AILabs (MONITORAPP)": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "AILabs (MONITORAPP)",
+                "category": "harmless"
+            },
+            "Forcepoint ThreatSeeker": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "Forcepoint ThreatSeeker",
+                "category": "harmless"
+            },
+            "Seclookup": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "Seclookup",
+                "category": "harmless"
+            },
+            "Bkav": {
+                "result": "unrated",
+                "method": "blacklist",
+                "engine_name": "Bkav",
+                "category": "undetected"
+            },
+            "Scantitan": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "Scantitan",
+                "category": "harmless"
+            },
+            "Sucuri SiteCheck": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "Sucuri SiteCheck",
+                "category": "harmless"
+            },
+            "ThreatHive": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "ThreatHive",
+                "category": "harmless"
+            },
+            "Criminal IP": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "Criminal IP",
+                "category": "harmless"
+            },
+            "Netcraft": {
+                "result": "unrated",
+                "method": "blacklist",
+                "engine_name": "Netcraft",
+                "category": "undetected"
+            },
+            "SOCRadar": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "SOCRadar",
+                "category": "harmless"
+            },
+            "CMC Threat Intelligence": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "CMC Threat Intelligence",
+                "category": "harmless"
+            },
+            "Kaspersky": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "Kaspersky",
+                "category": "harmless"
+            },
+            "G-Data": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "G-Data",
+                "category": "harmless"
+            },
+            "Segasec": {
+                "result": "unrated",
+                "method": "blacklist",
+                "engine_name": "Segasec",
+                "category": "undetected"
+            },
+            "ViriBack": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "ViriBack",
+                "category": "harmless"
+            },
+            "Bfore.Ai PreCrime": {
+                "result": "unrated",
+                "method": "blacklist",
+                "engine_name": "Bfore.Ai PreCrime",
+                "category": "undetected"
+            },
+            "CINS Army": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "CINS Army",
+                "category": "harmless"
+            },
+            "ESTsecurity": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "ESTsecurity",
+                "category": "harmless"
+            },
+            "0xSI_f33d": {
+                "result": "unrated",
+                "method": "blacklist",
+                "engine_name": "0xSI_f33d",
+                "category": "undetected"
+            },
+            "CSIS Security Group": {
+                "result": "unrated",
+                "method": "blacklist",
+                "engine_name": "CSIS Security Group",
+                "category": "undetected"
+            },
+            "Certego": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "Certego",
+                "category": "harmless"
+            },
+            "Spam404": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "Spam404",
+                "category": "harmless"
+            },
+            "ArcSight Threat Intelligence": {
+                "result": "unrated",
+                "method": "blacklist",
+                "engine_name": "ArcSight Threat Intelligence",
+                "category": "undetected"
+            },
+            "Cyan": {
+                "result": "unrated",
+                "method": "blacklist",
+                "engine_name": "Cyan",
+                "category": "undetected"
+            },
+            "Acronis": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "Acronis",
+                "category": "harmless"
+            },
+            "URLQuery": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "URLQuery",
+                "category": "harmless"
+            },
+            "PhishLabs": {
+                "result": "unrated",
+                "method": "blacklist",
+                "engine_name": "PhishLabs",
+                "category": "undetected"
+            },
+            "Cluster25": {
+                "result": "unrated",
+                "method": "blacklist",
+                "engine_name": "Cluster25",
+                "category": "undetected"
+            },
+            "Cyble": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "Cyble",
+                "category": "harmless"
+            },
+            "SCUMWARE.org": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "SCUMWARE.org",
+                "category": "harmless"
+            },
+            "Google Safebrowsing": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "Google Safebrowsing",
+                "category": "harmless"
+            },
+            "IPsum": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "IPsum",
+                "category": "harmless"
+            },
+            "DNS8": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "DNS8",
+                "category": "harmless"
+            },
+            "Ermes": {
+                "result": "unrated",
+                "method": "blacklist",
+                "engine_name": "Ermes",
+                "category": "undetected"
+            },
+            "Yandex Safebrowsing": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "Yandex Safebrowsing",
+                "category": "harmless"
+            },
+            "ADMINUSLabs": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "ADMINUSLabs",
+                "category": "harmless"
+            },
+            "Hunt.io Intelligence": {
+                "result": "unrated",
+                "method": "blacklist",
+                "engine_name": "Hunt.io Intelligence",
+                "category": "undetected"
+            },
+            "OpenPhish": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "OpenPhish",
+                "category": "harmless"
+            },
+            "malwares.com URL checker": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "malwares.com URL checker",
+                "category": "harmless"
+            },
+            "Lionic": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "Lionic",
+                "category": "harmless"
+            },
+            "StopForumSpam": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "StopForumSpam",
+                "category": "harmless"
+            },
+            "Trustwave": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "Trustwave",
+                "category": "harmless"
+            },
+            "VX Vault": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "VX Vault",
+                "category": "harmless"
+            },
+            "Juniper Networks": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "Juniper Networks",
+                "category": "harmless"
+            },
+            "CyRadar": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "CyRadar",
+                "category": "harmless"
+            },
+            "ESET": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "ESET",
+                "category": "harmless"
+            },
+            "Fortinet": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "Fortinet",
+                "category": "harmless"
+            },
+            "Antiy-AVL": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "Antiy-AVL",
+                "category": "harmless"
+            },
+            "BitDefender": {
+                "result": "clean",
+                "method": "blacklist",
+                "engine_name": "BitDefender",
+                "category": "harmless"
+            },
+            "MalwareURL": {
+                "result": "unrated",
+                "method": "blacklist",
+                "engine_name": "MalwareURL",
+                "category": "undetected"
+            }
+        },
+        "tld": "com",
+        "whois_date": 1717474377,
+        "tags": [],
+        "last_dns_records": [
+            {
+                "type": "NS",
+                "ttl": 21600,
+                "value": "a.ns.facebook.com"
+            },
+            {
+                "flag": 0,
+                "tag": "issue",
+                "type": "CAA",
+                "ttl": 924,
+                "value": "digicert.com;"
+            },
+            {
+                "type": "TXT",
+                "ttl": 3600,
+                "value": "v=spf1 redirect=_spf.facebook.com"
+            },
+            {
+                "type": "MX",
+                "priority": 10,
+                "ttl": 330,
+                "value": "smtpin.vvv.facebook.com"
+            },
+            {
+                "type": "NS",
+                "ttl": 21600,
+                "value": "b.ns.facebook.com"
+            },
+            {
+                "type": "NS",
+                "ttl": 21600,
+                "value": "c.ns.facebook.com"
+            },
+            {
+                "rname": "dns.facebook.com",
+                "serial": 4207849484,
+                "expire": 604800,
+                "refresh": 14400,
+                "type": "SOA",
+                "ttl": 3600,
+                "value": "a.ns.facebook.com",
+                "minimum": 300,
+                "retry": 1800
+            },
+            {
+                "type": "TXT",
+                "ttl": 3600,
+                "value": "google-site-verification=wdH5DTJTc9AYNwVunSVFeK0hYDGUIEOGb-RReU6pJlY"
+            },
+            {
+                "type": "A",
+                "ttl": 60,
+                "value": "157.240.229.35"
+            },
+            {
+                "type": "TXT",
+                "ttl": 3600,
+                "value": "google-site-verification=A2WZWCNQHrGV_TWwKh6KHY90tY0SHZo_RnyMJoDaG0s"
+            },
+            {
+                "type": "AAAA",
+                "ttl": 60,
+                "value": "2a03:2880:f103:181:face:b00c:0:25de"
+            },
+            {
+                "type": "TXT",
+                "ttl": 3600,
+                "value": "zoom-domain-verification=4b2ef4e1-6dee-4483-9869-9bef353fd147"
+            },
+            {
+                "type": "TXT",
+                "ttl": 3600,
+                "value": "google-site-verification=sK6uY9x7eaMoEMfn3OILqwTFYgaNp4llmguKI-C3_iA"
+            },
+            {
+                "type": "NS",
+                "ttl": 21600,
+                "value": "d.ns.facebook.com"
+            }
+        ],
+        "total_votes": {
+            "malicious": 32,
+            "harmless": 52
+        },
+        "last_analysis_date": 1719813382,
+        "whois": "Admin City: Menlo Park\nAdmin Country: US\nAdmin Email: 03d71b91f97a44efs@fb.com\nAdmin Organization: Meta Platforms, Inc.\nAdmin Postal Code: 94025\nAdmin State/Province: CA\nCreation Date: 1997-03-29T05:00:00Z\nDNSSEC: unsigned\nDomain Name: FACEBOOK.COM\nDomain Status: clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited\nDomain Status: clientDeleteProhibited https://www.icann.org/epp#clientDeleteProhibited\nDomain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited\nDomain Status: clientTransferProhibited https://www.icann.org/epp#clientTransferProhibited\nDomain Status: clientUpdateProhibited https://icann.org/epp#clientUpdateProhibited\nDomain Status: clientUpdateProhibited https://www.icann.org/epp#clientUpdateProhibited\nDomain Status: serverDeleteProhibited https://icann.org/epp#serverDeleteProhibited\nDomain Status: serverDeleteProhibited https://www.icann.org/epp#serverDeleteProhibited\nDomain Status: serverTransferProhibited https://icann.org/epp#serverTransferProhibited\nDomain Status: serverTransferProhibited https://www.icann.org/epp#serverTransferProhibited\nDomain Status: serverUpdateProhibited https://icann.org/epp#serverUpdateProhibited\nDomain Status: serverUpdateProhibited https://www.icann.org/epp#serverUpdateProhibited\nName Server: A.NS.FACEBOOK.COM\nName Server: B.NS.FACEBOOK.COM\nName Server: C.NS.FACEBOOK.COM\nName Server: D.NS.FACEBOOK.COM\nRegistrant City: 0a6347cfe4514b39\nRegistrant Country: US\nRegistrant Email: 03d71b91f97a44efs@fb.com\nRegistrant Fax Ext: 3432650ec337c945\nRegistrant Fax: 3432650ec337c945\nRegistrant Name: edeae57e15fec50a\nRegistrant Organization: 30c9c7c4d8b651d8\nRegistrant Phone Ext: 3432650ec337c945\nRegistrant Phone: 6dda930e2ecde438\nRegistrant Postal Code: f24f08453958b611\nRegistrant State/Province: b1952dfc047df18a\nRegistrant Street: 079d6691e053c662\nRegistrar Abuse Contact Email: abusecomplaints@registrarsafe.com\nRegistrar Abuse Contact Phone: +1-650-308-7004\nRegistrar Abuse Contact Phone: +1.6503087004\nRegistrar IANA ID: 3237\nRegistrar Registration Expiration Date: 2033-03-30T04:00:00Z\nRegistrar URL: http://www.registrarsafe.com\nRegistrar URL: https://www.registrarsafe.com\nRegistrar WHOIS Server: whois.registrarsafe.com\nRegistrar: RegistrarSafe, LLC\nRegistry Domain ID: 2320948_DOMAIN_COM-VRSN\nRegistry Expiry Date: 2033-03-30T04:00:00Z\nTech City: Menlo Park\nTech Country: US\nTech Email: 03d71b91f97a44efs@fb.com\nTech Organization: Meta Platforms, Inc.\nTech Postal Code: 94025\nTech State/Province: CA\nUpdated Date: 2024-04-24T19:06:12Z\nUpdated Date: 2024-04-24T19:06:13Z",
+        "last_https_certificate_date": 1719813393,
+        "popularity_ranks": {
+            "Quantcast": {
+                "rank": 2,
+                "timestamp": 1585755370
+            },
+            "Cisco Umbrella": {
+                "rank": 51,
+                "timestamp": 1719741122
+            },
+            "Alexa": {
+                "rank": 5,
+                "timestamp": 1684083480
+            },
+            "Statvoo": {
+                "rank": 5,
+                "timestamp": 1684083481
+            },
+            "Majestic": {
+                "rank": 2,
+                "timestamp": 1706806682
+            }
+        },
+        "last_modification_date": 1719817139,
+        "last_dns_records_date": 1719813393,
+        "last_https_certificate": {
+            "public_key": {
+                "ec": {
+                    "oid": "secp256r1",
+                    "pub": "3059301306072a8648ce3d020106082a8648ce3d03010703420004c411d4a184587e756606a53576f468d1d0bfeae400d25cae2a2bea12231fa06f1ca5fb0e073cefb17b64df8b878c9c9964f84fb96e149c231c3f0553bb0b0f8a"
+                },
+                "algorithm": "EC"
+            },
+            "extensions": {
+                "crl_distribution_points": [
+                    "http://crl3.digicert.com/sha2-ha-server-g6.crl",
+                    "http://crl4.digicert.com/sha2-ha-server-g6.crl"
+                ],
+                "certificate_policies": ["2.23.140.1.2.2"],
+                "ca_information_access": {
+                    "OCSP": "http://ocsp.digicert.com",
+                    "CA Issuers": "http://cacerts.digicert.com/DigiCertSHA2HighAssuranceServerCA.crt"
+                },
+                "1.3.6.1.4.1.11129.2.4.2": "0482016b016900760076ff883f0ab6fb9551c261ccf587ba34b4a4cdbb29dc68",
+                "key_usage": [
+                    "digitalSignature",
+                    "keyAgreement"
+                ],
+                "subject_alternative_name": [
+                    "*.facebook.com",
+                    "*.facebook.net",
+                    "*.fbcdn.net",
+                    "*.fbsbx.com",
+                    "*.m.facebook.com",
+                    "*.messenger.com",
+                    "*.xx.fbcdn.net",
+                    "*.xy.fbcdn.net",
+                    "*.xz.fbcdn.net",
+                    "facebook.com",
+                    "messenger.com"
+                ],
+                "authority_key_identifier": {"keyid": "5168ff90af0207753cccd9656462a212b859723b"},
+                "subject_key_identifier": "fda5a95a6f2a5dc9204ec1df688077bed2a0b3c9",
+                "extended_key_usage": [
+                    "serverAuth",
+                    "clientAuth"
+                ],
+                "CA": false
+            },
+            "thumbprint_sha256": "c433c5c52d55f11421484ea1e141b4addffb8834014f925aab0be6856bedff75",
+            "size": 1693,
+            "subject": {
+                "ST": "California",
+                "C": "US",
+                "CN": "*.facebook.com",
+                "L": "Menlo Park",
+                "O": "Meta Platforms, Inc."
+            },
+            "thumbprint": "1cde8f9118877b2077bc1e514f3b452bff0ea226",
+            "serial_number": "4952a2b67a478a55481545a46bd9d56",
+            "validity": {
+                "not_after": "2024-07-08 23:59:59",
+                "not_before": "2024-04-09 00:00:00"
+            },
+            "cert_signature": {
+                "signature": "52437e8e6a2dc01d53080baaa15fb7d3555a2d334f0ceb2811b973672586bcf6c0e5db0ff092d6cc4582cfb58142fe8d6286e50060f378e75d2ff60a8f6418462ce0d6fe9e51558577509cab018038ce2db3dd95e7ecb6c79652ab4e845b22cb2ec9edad97c65dc534a39cd1959f0b7308e180613854d1bc8d7b3d9436c7e06e7091cc9043877d27081a974560ddce588143f0ed7116cb6dd57d19abed4e696e299a94ec41c328b9a29b94f55657fc1fd4cf29cb19d4cb1ae16506b1de67047ab84e0a7941be34efeabde928f14f94f0b91b9c36ebea54003eba104591edd1675ce578e19c28c4a1fb8e4c7fbaa259a8f7dcd4530622b538f85663b0ed893fcb",
+                "signature_algorithm": "sha256RSA"
+            },
+            "version": "V3",
+            "issuer": {
+                "C": "US",
+                "OU": "www.digicert.com",
+                "CN": "DigiCert SHA2 High Assurance Server CA",
+                "O": "DigiCert Inc"
+            }
+        },
+        "categories": {},
+        "last_update_date": 1713985573
+    },
+    "id": "facebook.com",
+    "type": "domain"
+}}
