@@ -298,31 +298,31 @@ public class FileScan extends Scan {
         }
     }
 
-    public PieChart toChart() throws IOException {
-        if (getTime() == 0) {
-            System.out.println("WARNING: No finished analysis found!\n(Please wait a few seconds and update)");
-            return null;
-        }
-        // Create Chart
-        DateTimeFormatter dateformat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").withZone(ZoneId.systemDefault());
-        String shortTime = dateformat.format(Instant.ofEpochSecond(getTime()));
-        PieChart chart = new PieChartBuilder().width(800).height(600).title(getName() + " ("+shortTime+")").theme(ChartTheme.GGPlot2).build();
-
-        // Customize Chart
-        chart.getStyler().setLegendVisible(false);
-        chart.getStyler().setPlotContentSize(.7);
-        chart.getStyler().setStartAngleInDegrees(90);
-
-        // Series
-        chart.addSeries(HARM, getHarmless());
-        chart.addSeries(UNDETECTED, getUndetected());
-        chart.addSeries(SUSPICIOUS, getSuspicious());
-        chart.addSeries(MAL, getMalicious());
-        chart.addSeries(TIME_OUT, getTimeout());
-        chart.addSeries(TYPE_UNSUPPORTED, typeUnsup);
-
-        return chart;
-    }
+//    public PieChart toChart() throws IOException {
+//        if (getTime() == 0) {
+//            System.out.println("WARNING: No finished analysis found!\n(Please wait a few seconds and update)");
+//            return null;
+//        }
+//        // Create Chart
+//        DateTimeFormatter dateformat = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm").withZone(ZoneId.systemDefault());
+//        String shortTime = dateformat.format(Instant.ofEpochSecond(getTime()));
+//        PieChart chart = new PieChartBuilder().width(800).height(600).title(getName() + " ("+shortTime+")").theme(ChartTheme.GGPlot2).build();
+//
+//        // Customize Chart
+//        chart.getStyler().setLegendVisible(false);
+//        chart.getStyler().setPlotContentSize(.7);
+//        chart.getStyler().setStartAngleInDegrees(90);
+//
+//        // Series
+//        chart.addSeries(HARM, getHarmless());
+//        chart.addSeries(UNDETECTED, getUndetected());
+//        chart.addSeries(SUSPICIOUS, getSuspicious());
+//        chart.addSeries(MAL, getMalicious());
+//        chart.addSeries(TIME_OUT, getTimeout());
+//        chart.addSeries(TYPE_UNSUPPORTED, typeUnsup);
+//
+//        return chart;
+//    }
 
     private String getUploadURL(String apikey) throws IOException, InterruptedException {
         //Get a URL for uploading files larger than 32MB

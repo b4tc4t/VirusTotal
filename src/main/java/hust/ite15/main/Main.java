@@ -12,11 +12,14 @@ public class Main {
     public static String exportScanType = "";
 
     private static boolean loadConfig() {
+        FileInputStream configLoader = null;
         try {
             Properties prop = new Properties();
             String configPath = System.getProperty("user.dir") + "/src/main/resources/config.properties";
-            prop.load(new FileInputStream(configPath));
+            configLoader = new FileInputStream(configPath);
+            prop.load(configLoader);
             apiKey = prop.getProperty("apikey");
+            configLoader.close();
             return true;
         } catch (IOException e) {
             return false;
